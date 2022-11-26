@@ -9,7 +9,7 @@
 		document.write("<br>");
 	}
 
-	function print(text){
+	function imprimir(text){
 		document.write(text);
 		saltarlinea();
 	}
@@ -24,6 +24,22 @@
 	var alturaUsuario = prompt(nombre + " Informe su altura: ");
 	var imcUsuario = calcularIMC (pesoUsuario,alturaUsuario);
 
-	print(nombre +" su IMC es: " + imcUsuario);
+	imprimir(nombre +" su IMC es: " + imcUsuario);
+
+	if (imcUsuario < 18.5){
+		imprimir("IMC esta abajo de lo recomendado");
+	}
+	
+	if (imcUsuario >= 18.5 && imcUsuario < 25){
+		imprimir("IMC es el recomendado");
+	}
+
+	if (imcUsuario >=25 && imcUsuario < 30){
+		imprimir("IMC es considerado sobrepeso");
+	}
+
+	if (imcUsuario >= 30){
+		imprimir("IMC considerado obesidad");
+	}
 
 </script>

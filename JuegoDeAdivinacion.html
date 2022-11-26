@@ -1,0 +1,35 @@
+<meta charset="UTF-8">
+
+<h1> PROGRAMA JUEGO DE ADIVINACIÓN</h1>
+
+<script>
+
+	function saltarlinea(){
+		document.write("<br>");
+		document.write("<br>");
+	}
+
+	function imprimir(text){
+		document.write(text);
+		saltarlinea();
+	}
+
+	var NumeroPensado = Math.round(Math.random()*13);	//Math.round(): redondea un numero decimal.
+														//Math.random(): genera un numero aleatorio entre 0.01 a 1.
+
+	var NumeroUsuario = parseInt (prompt("Ingrese un numero entre 0 - 13:"));
+
+	if (NumeroUsuario == NumeroPensado){
+		imprimir("¡HAS ACERTADO! FELICIDADES");
+	}
+	else{
+		imprimir ("PERDISTE... Lo siento, el numero pensado era: " + NumeroPensado);
+	}
+
+
+
+
+
+</script>
+
+

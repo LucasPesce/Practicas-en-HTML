@@ -14,22 +14,32 @@
 		saltarlinea();
 	}
 
-	var NumeroPensado = Math.round(Math.random()*13);	//Math.round(): redondea un numero decimal.
-														//Math.random(): genera un numero aleatorio entre 0.01 a 1.
+	var NumeroPensado = Math.round(Math.random()*13);	
+	
+	var Intentos = 3;
+	var contador = 1;
 
-	var NumeroUsuario = parseInt (prompt("Ingrese un numero entre 0 - 13:"));
+	while (contador <= Intentos){
+
+		var NumeroUsuario = parseInt (prompt("Ingrese un numero entre 0 - 13:"));
+
+		if (NumeroUsuario == NumeroPensado){
+		alert ("¡HAS ACERTADO! FELICIDADES, lo lograste en tu intento numero " + Intentos + " el numero pensado era: " + NumeroPensado); break;
+		}
+		else{
+		alert ("PERDISTE... ");
+		
+		}
+		contador++;
+	}
 
 	if (NumeroUsuario == NumeroPensado){
-		imprimir("¡HAS ACERTADO! FELICIDADES");
-	}
-	else{
-		imprimir ("PERDISTE... Lo siento, el numero pensado era: " + NumeroPensado);
-	}
-
-
-
-
+		imprimir ("¡HAS ACERTADO! FELICIDADES, lo lograste en tu intento numero " + Intentos + " el numero pensado era: " + NumeroPensado); 
+		}
+		
+		else{
+		imprimir ("PERDISTE... El numero pensado era: " + NumeroPensado);
+		
+		}
 
 </script>
-
-

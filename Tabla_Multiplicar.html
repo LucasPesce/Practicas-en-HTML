@@ -1,0 +1,29 @@
+<meta charset="UTF-8">
+
+<h1>TABLA DE MULTIPLICAR</h1>
+
+<script>
+
+	function saltarlinea(){
+		document.write("<br>");
+		document.write("<br>");
+	}
+
+	function imprimir(text){
+		document.write(text);
+		saltarlinea();
+	}
+
+	
+
+	var Numero = parseInt (prompt("Ingrese un numero para realizar la tabla: "))
+
+
+	for (var multiplicador = 1; multiplicador <=10; multiplicador ++){
+
+		imprimir (Numero + " multiplicado por " + multiplicador + " es: " + (Numero*multiplicador));
+	}
+
+</script>
+
+

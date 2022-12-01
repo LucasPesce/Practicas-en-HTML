@@ -1,0 +1,37 @@
+<canvas width="600" height="400"> </canvas>
+
+<script>
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");  
+
+    pincel.fillStyle = "grey";
+    pincel.fillRect(0,0,600,400); 
+
+    var colores = ["purple", "yellow", "blue"];					//Lista de colores posibles
+    var indiceColorActual = 0; 									// Indice de colores que inicializa con violeta
+
+    function dibujarCirculo(evento){
+        var x = evento.pageX - pantalla.offsetLeft;
+        var y = evento.pageY - pantalla.offsetTop;
+
+        pincel.fillStyle = colores[indiceColorActual];			//.fillStlye se vincula con la lista colores [indice de colores]
+
+        pincel.beginPath();
+        pincel.arc(x,y,10,0,2*3.14);
+        pincel.fill();
+        console.log(x + "," + y);        
+    }
+
+    pantalla.onclick = dibujarCirculo;							//Click Izq llama a la funcion dibujar circulo
+
+    function alterarColor() {
+        indiceColorActual++;									//Cada llamado de la funcion aumenta en 1 al INDICE DE COLORES. 
+        if(indiceColorActual>= colores.length) {				//Si el INDICE DE COLORES es mayor o igual a las posiciones donde no hay color
+             indiceColorActual = 0; 							//Se reacigna al INDICE DE COLORES, el valor 0, para que vuelva a la primera posicion
+        }
+        return false; 											//menú contextual padrón de `canvas` no sea exhibido
+    }
+
+    pantalla.oncontextmenu = alterarColor;						//Clic Der llama a la funcion alerar color
+
+</script> 

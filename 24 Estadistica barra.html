@@ -1,0 +1,43 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    function dibujarRectangulo(x, y, base, altura, color) {                     //FUNCION DIBUJAR RECTANGULO (cordenadas X Y, base, altura, color)
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+
+        pincel.fillStyle=color;                                                 //Vincula variable color
+        pincel.fillRect(x,y, base, altura);                                     //Vincula variables cordenadas X, Y; base y altura
+        pincel.strokeStyle="black";
+        pincel.strokeRect(x,y, base, altura);                                   //Vincula variables cordenadas X, Y; base y altura
+    }
+
+    function escribirTexto(x , y, texto) {                                      //FUNCION DE TEXTO DE LA GRAFICA
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+
+        pincel.font="15px Georgia";                                             //Determina tamaño y letra
+        pincel.fillStyle="black";                                               //Determina color del texto
+        pincel.fillText(texto, x, y);                                           //Vincula texto y cordenadas X Y    
+    }
+
+    function dibujarBarra(x, y, serie, colores, texto) {                        //FUNCION CREAR BARRA
+
+        escribirTexto(x, y - 10, texto);                                        //Vinculo con variable texto y posiciona segun las cordenadas X Y
+
+        var sumaAltura = 0;                                                     //Variable que va sumando las alturas para posicionar los rectangulos
+        for (var i = 0; i < serie.length; i++) {                                //(contador=0, contador es menor a la posicion de la serie, aumenta contador)
+            var altura = serie[i];                                              //Se vincula la altura, con el elemento posicionado que indica el contador
+            dibujarRectangulo(x, y + sumaAltura, 50, altura, colores[i]);       //Llamado a la funcion de dibujarRectangulo (cordenadas, base, altura, color [posicion del contador])
+            sumaAltura += altura;                                               //Se va sumando las alturas en la variable
+        }
+    }
+
+    var colores = ["blue","green","yellow", "red","gray"];                      //Lista de colores 
+    var serie2009 = [6,47,41,3,3];                                              //Lista Altura 1, con las alturas  
+    var serie2019 = [81,9,3,3,4];                                               //Lista Altura 2, con las alturas
+
+    dibujarBarra(50, 50, serie2009, colores, "2009");                           //Llamado de la funcion dibujarBarra (cordenadas, Lista Altura 1, Lista colores, "texto")
+    dibujarBarra(150, 50, serie2019, colores, "2019");                          //Llamado de la funcion dibujarBarra (cordenadas, Lista Altura 2, Lista colores, "texto")
+
+</script>

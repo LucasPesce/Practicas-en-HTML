@@ -1,0 +1,23 @@
+<canvas width="600" height="400"></canvas>					
+
+<script>
+	function dibujarCuadrado(COLOR, X, Y){
+		var pantalla = document.querySelector("canvas");		
+		var pincel = pantalla.getContext("2d");
+
+		pincel.fillStyle = COLOR;							
+		pincel.fillRect(X, Y,50,50);
+		pincel.strokeStyle = "black";								//.strokeStyle: Color del contorno.
+		pincel.strokeRect (X, Y,50,50);								//.strokeRect: Realiza el contorno del "Rec"(parametros X Y, dimensiones X Y)	
+	}
+
+	
+
+	for (X=0; X <=600; X+=50){
+		dibujarCuadrado ("lightblue",X, 0);
+		dibujarCuadrado ("white",X, 50);
+		dibujarCuadrado ("lightblue",X, 100);
+	}
+
+
+</script>

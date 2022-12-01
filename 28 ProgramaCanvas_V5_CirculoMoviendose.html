@@ -1,0 +1,50 @@
+<canvas width="600" height="400"></canvas>					
+<script>
+	var pantalla = document.querySelector("canvas");		
+	var pincel = pantalla.getContext("2d");					
+	pincel.fillStyle = "white";						
+	pincel.fillRect(0,0,600,400);
+
+	var RADIO = 10;
+	var aleatorioX;
+	var aleatorioY;
+	var X = 0;
+
+	function dibujarCircunferencia (X, Y, RADIO, COLOR){		//Funcion que dibuja circulos de colores
+		pincel.fillStyle = COLOR;
+		pincel.beginPath ();
+		pincel.arc(X,Y,RADIO,0,2*Math.PI);					
+		pincel.fill();
+	}
+	function limpiarPantalla(){									//Funcion que borra toda la pantalla
+		pincel.clearRect (0, 0, 600, 400)					
+	}
+	function DibujarBlanco (X, Y){								//Funcion para dibujar el blanco llamando a la funcion dibujar circunferencias
+		dibujarCircunferencia(X, Y, RADIO + 20, "red");
+		dibujarCircunferencia(X, Y, RADIO + 10, "white");
+		dibujarCircunferencia(X, Y, RADIO, "red");
+	}
+	function posicionAleatoria(max){							//Funcion que genera posiciones aleatorias dentro de la pizarra
+		return Math.floor(Math.random()*max);					//Math.floor: Redondea el numero para abajo.
+	}
+	function animarObjeto(){									//Funcion que hace aparecer el Blanco en posiciones aleatorias	
+		limpiarPantalla();										//Llama a la funcion de borrado de pantalla
+		aleatorioX= posicionAleatoria(600);						//La variable X, llama a la funcion de posicion aleatoria y le fija el maximo
+		aleatorioY= posicionAleatoria(400);						//La variable Y, llama a la funcion de posicion aleatoria y le fija el maximo
+		DibujarBlanco (aleatorioX,aleatorioY);					//Llama a la funcion que dibuja el Blanco y utiliza las variables de cordenadas aleatorias 
+		X++;													//Incremental de variable X												
+	}	
+	setInterval(animarObjeto, 750);								//Utiliza por intervalos de tiempo la funcion animar Objeto (tiempo)
+	function disparar (evento){									//Funcion que devuelve la alerta Tiro certero si se clickea el blanco
+		var X = evento.pageX - pantalla.offsetLeft;				
+		var Y = evento.pageY - pantalla.offsetTop;
+		if ((X < aleatorioX + RADIO) &&
+			(X > aleatorioX - RADIO) &&
+			(Y < aleatorioY + RADIO) &&
+			(Y > aleatorioY - RADIO)){
+			alert ("Tiro Certero");
+		}
+	}
+	pantalla.onclick = disparar									//Click Izq llama a la funcion disparar
+</script>
+
